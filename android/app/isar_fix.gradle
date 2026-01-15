@@ -1,0 +1,10 @@
+// Workaround for isar_flutter_libs namespace issue
+subprojects {
+    afterEvaluate { project ->
+        if (project.name == 'isar_flutter_libs') {
+            project.android {
+                namespace = 'io.isar.isar_flutter_libs'
+            }
+        }
+    }
+}

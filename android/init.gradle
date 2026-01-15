@@ -1,0 +1,13 @@
+gradle.projectsLoaded {
+    rootProject.subprojects { subproject ->
+        if (subproject.name == 'isar_flutter_libs') {
+            subproject.afterEvaluate {
+                if (subproject.hasProperty('android')) {
+                    subproject.android {
+                        namespace = 'io.isar.isar_flutter_libs'
+                    }
+                }
+            }
+        }
+    }
+}
