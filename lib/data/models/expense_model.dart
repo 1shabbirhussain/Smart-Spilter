@@ -1,4 +1,4 @@
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 part 'expense_model.g.dart';
 
@@ -55,6 +55,16 @@ class Expense {
 
   /// Split details for each member
   late List<ExpenseSplit> splits;
+
+  /// Stable id shared with Firestore (assigned on first save)
+  @Index()
+  String? remoteId;
+
+  /// Last local or remote modification, used for conflict resolution
+  DateTime? updatedAt;
+
+  /// True while a local change hasn't been confirmed by the server
+  bool pendingSync = false;
 
   /// Constructor
   Expense({

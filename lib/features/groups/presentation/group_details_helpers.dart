@@ -4,6 +4,7 @@ import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/utils/snackbar_utils.dart'; // Ensure generic helper methods are not duplicating logic if possible, but this is fine.
+import '../../social/presentation/friend_picker_sheet.dart';
 import 'group_details_controller.dart';
 
 /// Shows delete confirmation dialog
@@ -61,20 +62,49 @@ void showManageMembersDialog(
           ),
           const SizedBox(height: 16),
 
-          // Add Member Button
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton.icon(
-              onPressed: () => _showAddMemberDialog(context, controller),
-              icon: const Icon(Icons.person_add),
-              label: const Text('Add Group Member'),
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+          // Add Member Buttons
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton.icon(
+                  onPressed: () async {
+                    final picked = await pickFriends(
+                      context,
+                      excludeUids: controller.linkedUids,
+                    );
+                    await controller.addFriends(picked);
+                  },
+                  icon: const Icon(Icons.people_alt_outlined),
+                  label: const Text('Add Friends'),
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
                 ),
               ),
-            ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: ElevatedButton.icon(
+                  onPressed: () => _showAddMemberDialog(context, controller),
+                  icon: const Icon(Icons.person_add),
+                  label: const Text('Add Person'),
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Tip: a person added without an account can be linked to a '
+            'friend later with the link button.',
+            style: Theme.of(context).textTheme.bodySmall,
           ),
 
           const SizedBox(height: 24),
@@ -121,6 +151,34 @@ void showManageMembersDialog(
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                         ),
+                        if (member.uid != null && !member.isMe)
+                          const Tooltip(
+                            message: 'Linked to a friend account',
+                            child: Icon(
+                              Icons.link,
+                              size: 20,
+                              color: AppColors.success,
+                            ),
+                          )
+                        else if (member.uid == null && !member.representsMe)
+                          IconButton(
+                            icon: const Icon(Icons.add_link),
+                            tooltip: 'Link to a friend',
+                            onPressed: () async {
+                              final picked = await pickFriends(
+                                context,
+                                excludeUids: controller.linkedUids,
+                                multiple: false,
+                                title: 'Link ${member.name} to…',
+                              );
+                              if (picked.isNotEmpty) {
+                                await controller.linkMember(
+                                  member.id,
+                                  picked.first,
+                                );
+                              }
+                            },
+                          ),
                         IconButton(
                           icon: Icon(
                             Icons.remove_circle_outline,

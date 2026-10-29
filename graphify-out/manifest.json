@@ -1,0 +1,582 @@
+{
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/test/balances_test.dart": {
+    "mtime": 1793170099.983323,
+    "hash": "c2f2770f1b0e7778c15ac03c258f4434"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/RunnerTests/RunnerTests.swift": {
+    "mtime": 1793168096.7966309,
+    "hash": "a225a382d14d7b16b6f602a5c1d49331"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Runner-Bridging-Header.h": {
+    "mtime": 1793168096.7964911,
+    "hash": "e07862ac930ed4d8479185d52c6cc66d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/GeneratedPluginRegistrant.h": {
+    "mtime": 1793168211.1945078,
+    "hash": "decb9041b5e91a07e66f4664e5dac408"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/AppDelegate.swift": {
+    "mtime": 1793168096.793012,
+    "hash": "303ca46dbd58544be7b816861d70a27c"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/GeneratedPluginRegistrant.m": {
+    "mtime": 1793184487.9684856,
+    "hash": "2b074d6d1837b9370267b1ae5b81dd87"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Flutter/ephemeral/flutter_lldb_helper.py": {
+    "mtime": 1793168210.8293753,
+    "hash": "98fc75412162af387e2e3461e4e58094"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/gradlew": {
+    "mtime": 1793168234.1127667,
+    "hash": "7f1cd7eb3f75a1dc85cd37753972a6e2"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/build.gradle.kts": {
+    "mtime": 1793168096.786802,
+    "hash": "868a78b9370a3f336d45cef0ec484ce9"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/settings.gradle.kts": {
+    "mtime": 1793169372.024182,
+    "hash": "7018bea4258143ed3ec379a08d197a2b"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/build.gradle.kts": {
+    "mtime": 1793169372.0437565,
+    "hash": "6d214fe0e2bbf0872098e3f03971f6fa"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java": {
+    "mtime": 1793184795.9663439,
+    "hash": "1c79cfcacce63b3b168b4ec64bff9ae8"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/kotlin/com/example/smart_expense_tracker/MainActivity.kt": {
+    "mtime": 1793168096.7847908,
+    "hash": "c445fb2278ad87f9845db4d9d396f920"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/firebase_options.dart": {
+    "mtime": 1793169552.7653093,
+    "hash": "f26dbcd82722cfaa41a569450a5912f7"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/main.dart": {
+    "mtime": 1793184528.2216055,
+    "hash": "aee713732525505fdb998316cb6ba2cd"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/constants/app_dimensions.dart": {
+    "mtime": 1793168096.7970054,
+    "hash": "10f7d68d104cdfc7b7606cc83e795823"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/constants/app_text_styles.dart": {
+    "mtime": 1793168096.7971513,
+    "hash": "90c5c66f30a28e450d6fef03ff684bfe"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/constants/app_colors.dart": {
+    "mtime": 1793168096.796909,
+    "hash": "c2efa6a01d7a7c31301890db4321234c"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/utils/balance_calculator.dart": {
+    "mtime": 1793169484.879342,
+    "hash": "3367d01813999dc29837425495725e5a"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/utils/settlement_optimizer.dart": {
+    "mtime": 1793168096.7977746,
+    "hash": "d929e3460161d7fec3c68579d9d24a65"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/utils/snackbar_utils.dart": {
+    "mtime": 1793168096.7978637,
+    "hash": "2a80dd3ca17376a004664603b12dc983"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/theme/app_theme.dart": {
+    "mtime": 1793168096.797635,
+    "hash": "5c3483a3db65c3347ab5677b64c0ec7a"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/services/debt_reminder_service.dart": {
+    "mtime": 1793172746.724689,
+    "hash": "c8c2eb94e55bea9c366783f01f26d307"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/services/app_prefs.dart": {
+    "mtime": 1793184509.8559406,
+    "hash": "42c59cba00a9942772605db47b001a03"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/services/notification_service.dart": {
+    "mtime": 1793184712.1846905,
+    "hash": "070871dd018b811b89ade949e7babda6"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/services/export_service.dart": {
+    "mtime": 1793184508.349676,
+    "hash": "578269d1f035cf38a6bc4ce23e7dc3bb"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/widgets/base64_image.dart": {
+    "mtime": 1793172584.4880545,
+    "hash": "79a67cf427a73e61e05e905faa5aea97"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/widgets/sync_status.dart": {
+    "mtime": 1793172583.720243,
+    "hash": "b147b83ced7c00d6fa101c2623e67650"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/widgets/gradient_background.dart": {
+    "mtime": 1793168096.7983394,
+    "hash": "9e3e06c401e8b6aae91181e03cd166a6"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/widgets/glassmorphic_card.dart": {
+    "mtime": 1793168096.7982469,
+    "hash": "c2ad79f41f8feda6affc4fdb27a740ba"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/core/widgets/animated_button.dart": {
+    "mtime": 1793168096.7981434,
+    "hash": "bfd74609187f1b317be2922816f3e591"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/insights/presentation/insights_controller.dart": {
+    "mtime": 1793169165.9247744,
+    "hash": "b17521c68f4bbb82a98edae0ef82fb1e"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/insights/presentation/insights_screen.dart": {
+    "mtime": 1793168096.8033028,
+    "hash": "f7f61bb676d7cad96097f27e4e1685db"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/settings/presentation/settings_screen.dart": {
+    "mtime": 1793184510.874645,
+    "hash": "9b3eb524e2fa0fe7b1fb73a9969ed467"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/splash/splash_screen.dart": {
+    "mtime": 1793184540.2153323,
+    "hash": "cfc960df6832577ac6e0b15bbb4ad3e2"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/auth/presentation/username_setup_screen.dart": {
+    "mtime": 1793169702.4354079,
+    "hash": "4d5412368a26ec361815be1333eddfae"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/auth/presentation/login_screen.dart": {
+    "mtime": 1793184551.7834094,
+    "hash": "36ebf253518a519d825a046d723c6eb3"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/auth/presentation/auth_gate.dart": {
+    "mtime": 1793169703.2017915,
+    "hash": "6186f3c064516470a36d7344b2befc36"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/settlements/presentation/settlements_screen.dart": {
+    "mtime": 1793172694.485038,
+    "hash": "97a05131d5f002575eba6d564f158470"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/settlements/presentation/settlements_controller.dart": {
+    "mtime": 1793169909.1896198,
+    "hash": "7fd5c7c91ec77ea7f251b4cddb1a690e"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/expenses/presentation/add_expense_screen.dart": {
+    "mtime": 1793169940.8991036,
+    "hash": "5e98f7c53ddb9bdc8f7211e9b4a8725f"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/expenses/presentation/add_expense_controller.dart": {
+    "mtime": 1793169947.9775927,
+    "hash": "83328956e4d31103a223527407062714"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/groups/presentation/group_list_controller.dart": {
+    "mtime": 1793169824.822556,
+    "hash": "d5a35c173d59ee7e22cef98761b03f77"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/groups/presentation/group_details_helpers.dart": {
+    "mtime": 1793172638.4996452,
+    "hash": "5d18869263544842c91f5c88ee417550"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/groups/presentation/group_details_controller.dart": {
+    "mtime": 1793172638.4986753,
+    "hash": "499ad6367261b71e2a64a2043aba20fc"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/groups/presentation/create_group_screen.dart": {
+    "mtime": 1793172610.31108,
+    "hash": "b26e56e02c379adf48971f8d5a27c0bf"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/groups/presentation/group_details_screen.dart": {
+    "mtime": 1793172638.5003169,
+    "hash": "76f4bd45f417606bad9f2d2a79b359e9"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/groups/presentation/group_list_screen.dart": {
+    "mtime": 1793172654.440687,
+    "hash": "090fd2a5d7cb6f8951a94e835e73f4e7"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/groups/presentation/create_group_controller.dart": {
+    "mtime": 1793172694.382408,
+    "hash": "d181e046c6f90952118b458098505602"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/social/presentation/friends_screen.dart": {
+    "mtime": 1793172694.5011559,
+    "hash": "8a44d88bc9ffd67ce53bdb0b978c6273"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/social/presentation/notifications_screen.dart": {
+    "mtime": 1793172546.195403,
+    "hash": "567e0041e36e1a0557930f506e3871ca"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/social/presentation/friend_picker_sheet.dart": {
+    "mtime": 1793172582.9480302,
+    "hash": "b7bcf2692108defd64367c1f64d68031"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/features/social/presentation/user_avatar.dart": {
+    "mtime": 1793169783.5917406,
+    "hash": "c2a55e5110d27eb3900b836b264568ce"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/models/member_model.dart": {
+    "mtime": 1793172329.122708,
+    "hash": "cd4c5e6ee23efee0a0b567f47bd3904c"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/models/expense_model.g.dart": {
+    "mtime": 1793172360.492383,
+    "hash": "d68559011fda90566da7a9b507d24f8b"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/models/settlement_model.g.dart": {
+    "mtime": 1793172360.4927185,
+    "hash": "a1601f73c3a9acf3aeb0922a22dc8a27"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/models/expense_model.dart": {
+    "mtime": 1793172329.1214924,
+    "hash": "1b6918164db306da79fa9c38f7b0f0a5"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/models/social_models.dart": {
+    "mtime": 1793172546.1949518,
+    "hash": "4d49421f6441f1724bee0a24a9392b54"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/models/group_model.dart": {
+    "mtime": 1793172329.121038,
+    "hash": "c1ee6c59625cb5c2201c5d42150b47d2"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/models/group_model.g.dart": {
+    "mtime": 1793172360.4925034,
+    "hash": "773d8efe33561979ccd8fc2e4976bac5"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/models/member_model.g.dart": {
+    "mtime": 1793172360.4926057,
+    "hash": "345da54442cd27c10b82c49afe15305c"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/models/settlement_model.dart": {
+    "mtime": 1793172329.1218102,
+    "hash": "7e3129681286695040a1a4b6020790c9"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/services/database_service.dart": {
+    "mtime": 1793172393.4045613,
+    "hash": "69dab6d3d63e2d6e5034ccd6c5a96b53"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/services/firestore_paths.dart": {
+    "mtime": 1793172392.6092823,
+    "hash": "f463ae7824a2078891c0fe2504243229"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/services/social_service.dart": {
+    "mtime": 1793172694.3498454,
+    "hash": "4b88e0ca9cb8d0c97b6cfac822e22ed5"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/services/auth_service.dart": {
+    "mtime": 1793172694.3407693,
+    "hash": "e52f3f5d768af5f9ed3801844b9d4024"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/services/sync_service.dart": {
+    "mtime": 1793172780.381527,
+    "hash": "f6c15a41af3446aaa262a6a855e57fab"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/lib/data/services/push_service.dart": {
+    "mtime": 1793172694.3443048,
+    "hash": "13ed92e242e4d22595f145a38334b153"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/functions/index.js": {
+    "mtime": 1793172723.9461899,
+    "hash": "1a79a28e8d911b8917a09f4cf3207f51"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/README.md": {
+    "mtime": 1793170238.8299541,
+    "hash": "dd7160dcbe339125b5396b2143060d5a"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/pubspec.yaml": {
+    "mtime": 1793184528.2347188,
+    "hash": "349deaa1a412b073019f712fb6ae4336"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/analysis_options.yaml": {
+    "mtime": 1793168096.7829456,
+    "hash": "66d03d7647c8e438164feaf5b922d44a"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md": {
+    "mtime": 1793168096.795896,
+    "hash": "e175e436acacf76c814d83532d0b662c"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png": {
+    "mtime": 1793184492.777471,
+    "hash": "0a5c3e3c55d7c97d3a5112e8c94710c1"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png": {
+    "mtime": 1793184492.8017375,
+    "hash": "9197601577d0fe6b55a3aa3cad9b2ff5"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png": {
+    "mtime": 1793184492.761735,
+    "hash": "3a33173101fdad8c3f1227cbadafcc09"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-57x57@1x.png": {
+    "mtime": 1793184490.751316,
+    "hash": "f1c05a6503866791a0fcf3ea3c610fbc"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png": {
+    "mtime": 1793184490.7514884,
+    "hash": "998150d9bffa5599a4ad575a69f2156a"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png": {
+    "mtime": 1793184490.751138,
+    "hash": "1f47883f140fecd35c9c54a6124464e1"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png": {
+    "mtime": 1793184490.7511628,
+    "hash": "75b950212977a38bf6f4f9d0f5550788"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-72x72@1x.png": {
+    "mtime": 1793184490.751505,
+    "hash": "aa8d1f00f27946b1f1b8cece8acae593"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png": {
+    "mtime": 1793184490.7510655,
+    "hash": "38b523dd9c3d41395321e376931e26d8"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-50x50@2x.png": {
+    "mtime": 1793184490.7513525,
+    "hash": "f615d203b03f8769e00367d61f64497d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png": {
+    "mtime": 1793184490.7515292,
+    "hash": "f19456858f79e1b8cf5b402f9e0d33f9"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png": {
+    "mtime": 1793184490.7515223,
+    "hash": "2846e3739b26581991fdc9e876aa567c"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png": {
+    "mtime": 1793184490.751092,
+    "hash": "ad6f022cef7feb04fcef561355d707d9"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-50x50@1x.png": {
+    "mtime": 1793184490.7512212,
+    "hash": "2f099b41380387c8d8d29057899a1fe0"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png": {
+    "mtime": 1793184490.7511542,
+    "hash": "75b950212977a38bf6f4f9d0f5550788"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png": {
+    "mtime": 1793184490.7511702,
+    "hash": "f687c688f36eb5bf5a16c2070aa3fb1d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png": {
+    "mtime": 1793184490.7511706,
+    "hash": "68d65c2a7ab9c6a4b0d00197287d0cc3"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-72x72@2x.png": {
+    "mtime": 1793184490.75149,
+    "hash": "b9d1af3320ba4eb33d8cc4b1bc7df086"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png": {
+    "mtime": 1793184490.7514327,
+    "hash": "dd647366f0514adb76b69cd082e4f8dc"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png": {
+    "mtime": 1793184490.7514777,
+    "hash": "26406011a44ad6bcf86d9f0ce7457176"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-57x57@2x.png": {
+    "mtime": 1793184490.7513433,
+    "hash": "4be07a231965171d6a69003db68a76c7"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png": {
+    "mtime": 1793184490.7515168,
+    "hash": "ee33365d5f3d5fb3be3d75bf1ff84eb0"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png": {
+    "mtime": 1793184490.7511837,
+    "hash": "26406011a44ad6bcf86d9f0ce7457176"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png": {
+    "mtime": 1793184490.751135,
+    "hash": "6e051212295c1cae61697a3a639f2dc4"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/ios/Runner/Assets.xcassets/LaunchBackground.imageset/background.png": {
+    "mtime": 1793184492.784402,
+    "hash": "065993165674a7fe87a7e8e268152e8d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/mipmap-mdpi/ic_launcher.png": {
+    "mtime": 1793184490.2828884,
+    "hash": "8e114f5f3cdb285d4569ee2b71f4f3db"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-night-xxhdpi/android12splash.png": {
+    "mtime": 1793184492.7066061,
+    "hash": "0736245b69f90c87ff165cefee0897c3"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/mipmap-hdpi/ic_launcher.png": {
+    "mtime": 1793184490.2828386,
+    "hash": "aa8d1f00f27946b1f1b8cece8acae593"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable/background.png": {
+    "mtime": 1793184492.566112,
+    "hash": "065993165674a7fe87a7e8e268152e8d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png": {
+    "mtime": 1793184490.2830305,
+    "hash": "aa919ef8fa65f7052f5d381c0835c2a8"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png": {
+    "mtime": 1793184490.2829015,
+    "hash": "b9d1af3320ba4eb33d8cc4b1bc7df086"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-night-mdpi/android12splash.png": {
+    "mtime": 1793184492.628517,
+    "hash": "0eca61f63f680a7ed03c042a58e3c49d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-night-hdpi/android12splash.png": {
+    "mtime": 1793184492.656126,
+    "hash": "d4fec22f3704254879897ac7f6c1a8a1"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xhdpi/ic_launcher_monochrome.png": {
+    "mtime": 1793184490.4063842,
+    "hash": "dd0c3944b53414d326c913248657d9a6"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xhdpi/ic_notification.png": {
+    "mtime": 1793184712.1695817,
+    "hash": "1f8005e5464b3aae20990b8ad12cfd07"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xhdpi/ic_launcher_foreground.png": {
+    "mtime": 1793184490.406659,
+    "hash": "dd0c3944b53414d326c913248657d9a6"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xhdpi/android12splash.png": {
+    "mtime": 1793184492.5550826,
+    "hash": "935414f56fc1418c9bfb666958dcf50d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xhdpi/splash.png": {
+    "mtime": 1793184492.4613035,
+    "hash": "0a5c3e3c55d7c97d3a5112e8c94710c1"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xhdpi/ic_launcher_background.png": {
+    "mtime": 1793184490.4440827,
+    "hash": "0e73e326b52e8a98f1ef67db40175e25"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-night-xhdpi/android12splash.png": {
+    "mtime": 1793184492.6733296,
+    "hash": "935414f56fc1418c9bfb666958dcf50d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxhdpi/ic_launcher_monochrome.png": {
+    "mtime": 1793184490.4064872,
+    "hash": "438344b610ffe9d9f1587eea0cc93290"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxhdpi/ic_notification.png": {
+    "mtime": 1793184712.1714232,
+    "hash": "775bd58100b395d7e9b5f2b610598c3f"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxhdpi/ic_launcher_foreground.png": {
+    "mtime": 1793184490.4064937,
+    "hash": "438344b610ffe9d9f1587eea0cc93290"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxhdpi/android12splash.png": {
+    "mtime": 1793184492.621956,
+    "hash": "0736245b69f90c87ff165cefee0897c3"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxhdpi/splash.png": {
+    "mtime": 1793184492.4945428,
+    "hash": "9197601577d0fe6b55a3aa3cad9b2ff5"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxhdpi/ic_launcher_background.png": {
+    "mtime": 1793184490.4440796,
+    "hash": "5afd583442c32f74eb6af00cd597f159"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-hdpi/ic_launcher_monochrome.png": {
+    "mtime": 1793184490.4065144,
+    "hash": "e40000f96621f84685fddf8b51688abc"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-hdpi/ic_notification.png": {
+    "mtime": 1793184712.1679943,
+    "hash": "369506d0c5c56c4cac7d8137c87b43ba"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-hdpi/ic_launcher_foreground.png": {
+    "mtime": 1793184490.4066772,
+    "hash": "e40000f96621f84685fddf8b51688abc"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-hdpi/android12splash.png": {
+    "mtime": 1793184492.5459418,
+    "hash": "d4fec22f3704254879897ac7f6c1a8a1"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-hdpi/splash.png": {
+    "mtime": 1793184492.4570813,
+    "hash": "bdf03c4e97693cf3ae5f5669e5cc789e"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-hdpi/ic_launcher_background.png": {
+    "mtime": 1793184490.4440308,
+    "hash": "09846b9f03a65d9834ade4e3c070f585"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-v21/background.png": {
+    "mtime": 1793184492.5668752,
+    "hash": "065993165674a7fe87a7e8e268152e8d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-mdpi/ic_launcher_monochrome.png": {
+    "mtime": 1793184490.4063702,
+    "hash": "6f91dd233afbd7e5394f5c6c4d454ca5"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-mdpi/ic_notification.png": {
+    "mtime": 1793184712.1663666,
+    "hash": "00e6e834c3f5bf7be179ae7cfc13be49"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-mdpi/ic_launcher_foreground.png": {
+    "mtime": 1793184490.4064684,
+    "hash": "6f91dd233afbd7e5394f5c6c4d454ca5"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-mdpi/android12splash.png": {
+    "mtime": 1793184492.5346358,
+    "hash": "0eca61f63f680a7ed03c042a58e3c49d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-mdpi/splash.png": {
+    "mtime": 1793184492.4567714,
+    "hash": "3a33173101fdad8c3f1227cbadafcc09"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-mdpi/ic_launcher_background.png": {
+    "mtime": 1793184490.444016,
+    "hash": "bca499deb1fc6151c9d056d361092fe0"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-night-xxxhdpi/android12splash.png": {
+    "mtime": 1793184492.712734,
+    "hash": "43448a580b5ffb9c75e1af706798db4d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png": {
+    "mtime": 1793184490.2828665,
+    "hash": "132594f1b80f7c9bfe0daeefe6f2645c"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxxhdpi/ic_launcher_monochrome.png": {
+    "mtime": 1793184490.4067903,
+    "hash": "10a2690d4d42d15a59927b7db05bc34e"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxxhdpi/ic_notification.png": {
+    "mtime": 1793184712.1734786,
+    "hash": "9a32b000a5944431f19ae943cf1cd9e3"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxxhdpi/ic_launcher_foreground.png": {
+    "mtime": 1793184490.4067104,
+    "hash": "10a2690d4d42d15a59927b7db05bc34e"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxxhdpi/android12splash.png": {
+    "mtime": 1793184492.5857923,
+    "hash": "43448a580b5ffb9c75e1af706798db4d"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxxhdpi/splash.png": {
+    "mtime": 1793184492.5056355,
+    "hash": "2a144d692443c5e3227ceecb50a1b442"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/android/app/src/main/res/drawable-xxxhdpi/ic_launcher_background.png": {
+    "mtime": 1793184490.444066,
+    "hash": "c7e7a711bde25f30c75f914207a72323"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/assets/branding/app_icon_background.png": {
+    "mtime": 1793184466.1167965,
+    "hash": "5b080249da2ec0d223607f38212ddb1b"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/assets/branding/app_icon.png": {
+    "mtime": 1793184459.8172057,
+    "hash": "1bf86fa6ab44e5366cce0d3ceb63bdb0"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/assets/branding/splash_android12.png": {
+    "mtime": 1793184473.6026762,
+    "hash": "2657dbf38c250ac38554da494f537bbd"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/assets/branding/app_icon_foreground.png": {
+    "mtime": 1793184463.4572916,
+    "hash": "aa489c396f2a67b7e648d4a0453c5ecb"
+  },
+  "/Users/macminim2/Documents/GitHub/Smart-Spilter/assets/branding/splash_logo.png": {
+    "mtime": 1793184469.8920403,
+    "hash": "38492098a681fb36cd34d4be4c61e317"
+  }
+}

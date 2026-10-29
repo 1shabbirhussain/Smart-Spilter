@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../../../data/models/expense_model.dart';
 import '../../../data/models/member_model.dart';

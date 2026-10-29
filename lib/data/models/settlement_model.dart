@@ -1,4 +1,4 @@
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 part 'settlement_model.g.dart';
 
@@ -29,6 +29,16 @@ class Settlement {
 
   /// Optional notes
   String? notes;
+
+  /// Stable id shared with Firestore (assigned on first save)
+  @Index()
+  String? remoteId;
+
+  /// Last local or remote modification, used for conflict resolution
+  DateTime? updatedAt;
+
+  /// True while a local change hasn't been confirmed by the server
+  bool pendingSync = false;
 
   /// Constructor
   Settlement({

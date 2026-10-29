@@ -10,6 +10,8 @@ import '../../expenses/presentation/add_expense_screen.dart';
 import '../../insights/presentation/insights_screen.dart';
 import '../../settlements/presentation/settlements_screen.dart';
 import 'group_details_helpers.dart';
+import '../../../core/widgets/sync_status.dart';
+import '../../social/presentation/friend_picker_sheet.dart';
 
 /// Group Details Screen showing expenses and balances
 class GroupDetailsScreen extends StatelessWidget {
@@ -51,6 +53,7 @@ class GroupDetailsScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   Future.delayed(Duration.zero, () {
+                    if (!context.mounted) return;
                     showManageMembersDialog(context, controller);
                   });
                 },
@@ -58,9 +61,32 @@ class GroupDetailsScreen extends StatelessWidget {
               PopupMenuItem(
                 child: Row(
                   children: const [
-                    Icon(Icons.archive, size: 20),
+                    Icon(Icons.group_add_outlined, size: 20),
                     SizedBox(width: 12),
-                    Text('Archive Group'),
+                    Text('Add Friends'),
+                  ],
+                ),
+                onTap: () {
+                  Future.delayed(Duration.zero, () async {
+                    if (!context.mounted) return;
+                    final picked = await pickFriends(
+                      context,
+                      excludeUids: controller.linkedUids,
+                    );
+                    await controller.addFriends(picked);
+                  });
+                },
+              ),
+              PopupMenuItem(
+                child: Row(
+                  children: [
+                    const Icon(Icons.archive, size: 20),
+                    const SizedBox(width: 12),
+                    Text(
+                      (controller.group.value?.isArchived ?? false)
+                          ? 'Unarchive Group'
+                          : 'Archive Group',
+                    ),
                   ],
                 ),
                 onTap: () async {
@@ -80,6 +106,7 @@ class GroupDetailsScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   Future.delayed(Duration.zero, () {
+                    if (!context.mounted) return;
                     showDeleteDialog(context, controller);
                   });
                 },
@@ -99,6 +126,8 @@ class GroupDetailsScreen extends StatelessWidget {
               onRefresh: controller.loadGroupDetails,
               child: CustomScrollView(
                 slivers: [
+                  const SliverToBoxAdapter(child: OfflineBanner()),
+
                   // Summary Card
                   SliverToBoxAdapter(
                     child: Padding(
@@ -264,7 +293,8 @@ class _BalancesSection extends StatelessWidget {
         children: [
           ...controller.members.map((member) {
             final balance = controller.balances[member.id] ?? 0.0;
-            if (balance == 0) return const SizedBox.shrink();
+            // Float math can leave tiny remainders like 1e-14
+            if (balance.abs() < 0.01) return const SizedBox.shrink();
 
             return _BalanceCard(
               member: member,
@@ -282,8 +312,8 @@ class _BalancesSection extends StatelessWidget {
                   Get.to(
                     () => SettlementsScreen(
                       groupId: controller.group.value!.id,
-                      balances: controller.balances,
-                      members: controller.members,
+                      balances: Map<int, double>.of(controller.balances),
+                      members: controller.members.toList(),
                       currency: controller.group.value!.currency,
                     ),
                   );

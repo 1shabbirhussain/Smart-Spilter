@@ -1,4 +1,4 @@
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 part 'member_model.g.dart';
 
@@ -20,13 +20,27 @@ class Member {
   /// Timestamp when member was created
   late DateTime createdAt;
 
+  /// Whether this member represents the device owner ("You")
+  bool isMe = false;
+
+  /// Firebase uid when this member is a linked friend
+  String? uid;
+
+  /// Stable id shared with Firestore (members live inside the group doc)
+  String? remoteId;
+
   /// Constructor
   Member({
     this.id = Isar.autoIncrement,
     required this.name,
     required this.emoji,
     required this.colorHex,
+    this.isMe = false,
+    this.uid,
   }) : createdAt = DateTime.now();
+
+  /// True for the device owner, including groups created before [isMe] existed
+  bool get representsMe => isMe || name == 'You';
 
   /// Empty constructor for Isar
   Member.empty()

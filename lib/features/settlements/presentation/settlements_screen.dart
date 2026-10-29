@@ -6,6 +6,7 @@ import '../../../core/constants/app_dimensions.dart';
 import '../../../core/widgets/gradient_background.dart';
 import '../../../core/widgets/glassmorphic_card.dart';
 import '../../../core/widgets/animated_button.dart';
+import '../../../data/models/member_model.dart';
 import 'settlements_controller.dart';
 
 /// Settlements Screen showing optimized settlements
@@ -29,6 +30,9 @@ class SettlementsScreen extends StatefulWidget {
 
 class _SettlementsScreenState extends State<SettlementsScreen> {
   late ConfettiController _confettiController;
+  late final SettlementsController controller;
+  late final String _tag;
+  Worker? _confettiWorker;
 
   @override
   void initState() {
@@ -36,29 +40,33 @@ class _SettlementsScreenState extends State<SettlementsScreen> {
     _confettiController = ConfettiController(
       duration: const Duration(seconds: 3),
     );
+    // Unique tag so a stale controller from an earlier visit is never reused
+    _tag = 'settlements-${widget.groupId}-${identityHashCode(this)}';
+    controller = Get.put(
+      SettlementsController(
+        groupId: widget.groupId,
+        balances: widget.balances,
+        members: List<Member>.from(widget.members),
+      ),
+      tag: _tag,
+    );
+
+    // Listen to confetti trigger (registered once, not on every build)
+    _confettiWorker = ever(controller.showConfetti, (show) {
+      if (show && mounted) _confettiController.play();
+    });
   }
 
   @override
   void dispose() {
+    _confettiWorker?.dispose();
+    Get.delete<SettlementsController>(tag: _tag);
     _confettiController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(
-      SettlementsController(
-        groupId: widget.groupId,
-        balances: widget.balances,
-        members: widget.members,
-      ),
-    );
-
-    // Listen to confetti trigger
-    ever(controller.showConfetti, (show) {
-      if (show) _confettiController.play();
-    });
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(title: const Text('Settle Up')),

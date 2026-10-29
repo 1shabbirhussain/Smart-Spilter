@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "135514481989",
+    "project_id": "devathon-saylani",
+    "storage_bucket": "devathon-saylani.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135514481989:android:1b74ed74cc6179e4e58a2c",
+        "android_client_info": {
+          "package_name": "com.example.hackathon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135514481989-ckln40fk21jb8m7rsgijeilnr3m26fid.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-AW6y-adVOPyXcX4SzVBXHjrCl8a_KMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135514481989-ckln40fk21jb8m7rsgijeilnr3m26fid.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135514481989:android:97beb60e539eef42e58a2c",
+        "android_client_info": {
+          "package_name": "com.example.smart_expense_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135514481989-tu6vr0phuf0r1a63fa2pvnr5gvnjkour.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smart_expense_tracker",
+            "certificate_hash": "53c51c5a8f1f208e7a19cb875bd57e0d9417b8ec"
+          }
+        },
+        {
+          "client_id": "135514481989-ckln40fk21jb8m7rsgijeilnr3m26fid.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-AW6y-adVOPyXcX4SzVBXHjrCl8a_KMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135514481989-ckln40fk21jb8m7rsgijeilnr3m26fid.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
@@ -6,6 +5,8 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/widgets/gradient_background.dart';
 import '../../../core/widgets/animated_button.dart';
+import '../../../core/widgets/base64_image.dart';
+import '../../social/presentation/friend_picker_sheet.dart';
 import 'create_group_controller.dart';
 
 /// Create Group Screen
@@ -50,14 +51,13 @@ class CreateGroupScreen extends StatelessWidget {
                       context,
                       onTap: controller.pickImage,
                       child: Obx(() {
-                        if (controller.selectedImagePath.value != null) {
+                        if (controller.selectedImageBase64.value != null) {
                           return ClipRRect(
                             borderRadius: BorderRadius.circular(
                               AppDimensions.radiusMedium,
                             ),
-                            child: Image.file(
-                              File(controller.selectedImagePath.value!),
-                              fit: BoxFit.cover,
+                            child: Base64Image(
+                              controller.selectedImageBase64.value!,
                               width: double.infinity,
                               height: double.infinity,
                             ),
@@ -138,11 +138,27 @@ class CreateGroupScreen extends StatelessWidget {
                       'Members',
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
-                    TextButton.icon(
-                      onPressed: () =>
-                          _showAddMemberDialog(context, controller),
-                      icon: const Icon(Icons.person_add),
-                      label: const Text('Add'),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TextButton.icon(
+                          onPressed: () async {
+                            final picked = await pickFriends(
+                              context,
+                              excludeUids: controller.friendUids,
+                            );
+                            controller.addFriends(picked);
+                          },
+                          icon: const Icon(Icons.people_alt_outlined),
+                          label: const Text('Friends'),
+                        ),
+                        TextButton.icon(
+                          onPressed: () =>
+                              _showAddMemberDialog(context, controller),
+                          icon: const Icon(Icons.person_add),
+                          label: const Text('Person'),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -155,6 +171,7 @@ class CreateGroupScreen extends StatelessWidget {
                         name: member['name']!,
                         emoji: member['emoji']!,
                         color: Color(int.parse('0xFF${member['color']}')),
+                        isFriend: member['uid'] != null,
                         onDelete: () => controller.removeMember(member),
                       );
                     }).toList(),
@@ -340,6 +357,7 @@ class _MemberTile extends StatelessWidget {
   final String name;
   final String emoji;
   final Color color;
+  final bool isFriend;
   final VoidCallback onDelete;
 
   const _MemberTile({
@@ -347,6 +365,7 @@ class _MemberTile extends StatelessWidget {
     required this.emoji,
     required this.color,
     required this.onDelete,
+    this.isFriend = false,
   });
 
   @override
@@ -385,6 +404,11 @@ class _MemberTile extends StatelessWidget {
           Expanded(
             child: Text(name, style: Theme.of(context).textTheme.titleMedium),
           ),
+          if (isFriend)
+            const Tooltip(
+              message: 'Linked friend - synced to their account',
+              child: Icon(Icons.link, size: 18, color: AppColors.success),
+            ),
           IconButton(
             icon: const Icon(Icons.close, size: 20),
             onPressed: onDelete,

@@ -1,4 +1,4 @@
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 part 'group_model.g.dart';
 
@@ -26,6 +26,22 @@ class Group {
 
   /// Optional path to cover image
   String? imagePath;
+
+  /// Compressed cover image (JPEG, base64) - synced inside the group doc
+  String? imageBase64;
+
+  /// Firebase uid of the creator (null for groups never synced)
+  String? ownerUid;
+
+  /// Stable id shared with Firestore (assigned on first save)
+  @Index()
+  String? remoteId;
+
+  /// Last local or remote modification, used for conflict resolution
+  DateTime? updatedAt;
+
+  /// True while a local change hasn't been confirmed by the server
+  bool pendingSync = false;
 
   /// Member IDs in this group
   late List<int> memberIds;

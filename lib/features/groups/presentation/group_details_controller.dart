@@ -1,12 +1,17 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
+import '../../../core/utils/balance_calculator.dart';
 import '../../../core/utils/snackbar_utils.dart';
 import '../../../data/models/group_model.dart';
 import '../../../data/models/member_model.dart';
 import '../../../data/models/expense_model.dart';
 import '../../../data/models/settlement_model.dart';
+import '../../../data/models/social_models.dart';
 import '../../../data/services/database_service.dart';
+import '../../../data/services/social_service.dart';
+import '../../../core/constants/app_colors.dart';
+import 'dart:math';
 
 /// Controller for Group Details Screen
 class GroupDetailsController extends GetxController {
@@ -70,9 +75,12 @@ class GroupDetailsController extends GetxController {
 
   // MARK: - Data Loading
 
+  bool _loadedOnce = false;
+
   Future<void> loadGroupDetails() async {
     try {
-      isLoading.value = true;
+      // Watchers reload often; only show the full-screen spinner initially
+      if (!_loadedOnce) isLoading.value = true;
 
       // Load group
       group.value = await _db.getGroupById(groupId);
@@ -95,6 +103,7 @@ class GroupDetailsController extends GetxController {
     } catch (e) {
       SnackbarUtils.showError('Error', 'Failed to load group details: $e');
     } finally {
+      _loadedOnce = true;
       isLoading.value = false;
     }
   }
@@ -102,40 +111,11 @@ class GroupDetailsController extends GetxController {
   // MARK: - Balance Calculation
 
   void _calculateBalances() {
-    final Map<int, double> tempBalances = {};
-
-    // Initialize all members with 0 balance
-    for (final member in members) {
-      tempBalances[member.id] = 0.0;
-    }
-
-    // 1. Calculate balances from Expenses
-    for (final expense in expenses) {
-      // Person who paid gets positive balance (money owed TO them)
-      tempBalances[expense.paidById] =
-          (tempBalances[expense.paidById] ?? 0) + expense.amount;
-
-      // People who split get negative balance (money they OWE)
-      for (final split in expense.splits) {
-        tempBalances[split.memberId] =
-            (tempBalances[split.memberId] ?? 0) - split.amount;
-      }
-    }
-
-    // 2. Apply Settlements (Payments reduce balances)
-    for (final settlement in settlements) {
-      // Payer (fromMemberId) PAID money, so their balance increases (debt reduces)
-      // e.g. If balance was -100 (debt), paying 100 makes it 0.
-      tempBalances[settlement.fromMemberId] =
-          (tempBalances[settlement.fromMemberId] ?? 0) + settlement.amount;
-
-      // Receiver (toMemberId) RECEIVED money, so their balance decreases (credit reduces)
-      // e.g. If balance was +100 (credit), receiving 100 makes it 0.
-      tempBalances[settlement.toMemberId] =
-          (tempBalances[settlement.toMemberId] ?? 0) - settlement.amount;
-    }
-
-    balances.value = tempBalances;
+    balances.value = BalanceCalculator.calculate(
+      memberIds: members.map((m) => m.id),
+      expenses: expenses,
+      settlements: settlements,
+    );
   }
 
   // MARK: - Actions
@@ -152,13 +132,14 @@ class GroupDetailsController extends GetxController {
 
   Future<void> toggleArchive() async {
     if (group.value == null) return;
+    final wasArchived = group.value!.isArchived;
     try {
       await _db.toggleGroupArchive(groupId);
-      // Watcher will reload data
-      Get.back(); // Close menu
+      // The popup menu is already closed; go back to the group list
+      Get.back();
       SnackbarUtils.showSuccess(
         'Success',
-        group.value!.isArchived ? 'Group unarchived' : 'Group archived',
+        wasArchived ? 'Group unarchived' : 'Group archived',
       );
     } catch (e) {
       SnackbarUtils.showError('Error', 'Failed to update archive status: $e');
@@ -195,6 +176,84 @@ class GroupDetailsController extends GetxController {
       // Watcher handles reload
     } catch (e) {
       SnackbarUtils.showError('Error', 'Failed to add member: $e');
+    }
+  }
+
+  Set<String> get linkedUids =>
+      members.map((m) => m.uid).whereType<String>().toSet();
+
+  void _notifyFriends(Iterable<String> uids) {
+    final name = group.value?.name;
+    if (name == null || uids.isEmpty || !Get.isRegistered<SocialService>()) {
+      return;
+    }
+    SocialService.to.notifyAddedToGroup(uids, name);
+  }
+
+  /// Adds friends as members; the group then syncs to their accounts
+  Future<void> addFriends(List<Friend> friends) async {
+    final current = group.value;
+    if (current == null || friends.isEmpty) return;
+    try {
+      final fresh = friends.where((f) => !linkedUids.contains(f.uid)).toList();
+      final ids = current.memberIds.toList();
+      for (final f in fresh) {
+        final color = AppColors
+            .avatarColors[Random().nextInt(AppColors.avatarColors.length)];
+        ids.add(
+          await _db.createMember(
+            Member(
+              name: f.displayName,
+              emoji: '👤',
+              colorHex: color
+                  .toARGB32()
+                  .toRadixString(16)
+                  .padLeft(8, '0')
+                  .substring(2)
+                  .toUpperCase(),
+              uid: f.uid,
+            ),
+          ),
+        );
+      }
+      current.memberIds = ids;
+      await _db.updateGroup(current);
+      _notifyFriends(fresh.map((f) => f.uid));
+      SnackbarUtils.showSuccess(
+        'Friends added',
+        'The group now appears in their app',
+      );
+    } catch (e) {
+      SnackbarUtils.showError('Error', 'Failed to add friends: $e');
+    }
+  }
+
+  /// Connects a local-only member to a friend's account. All of that
+  /// member's expenses and settlements become visible to the friend.
+  Future<void> linkMember(int memberId, Friend friend) async {
+    final current = group.value;
+    final member = getMemberById(memberId);
+    if (current == null || member == null) return;
+    if (linkedUids.contains(friend.uid)) {
+      SnackbarUtils.showError(
+        'Already in group',
+        '${friend.displayName} is already a member of this group',
+      );
+      return;
+    }
+    try {
+      member
+        ..uid = friend.uid
+        ..name = friend.displayName;
+      await _db.updateMember(member);
+      await _db.updateGroup(current); // pushes the new member link
+      _notifyFriends([friend.uid]);
+      SnackbarUtils.showSuccess(
+        'Linked',
+        '${member.name} is now connected to @${friend.username}',
+      );
+    } catch (e) {
+      SnackbarUtils.showError('Error', 'Failed to link member: $e');
     }
   }
 

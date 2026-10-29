@@ -5,6 +5,13 @@ import '../../../core/constants/app_dimensions.dart';
 import '../../../core/widgets/gradient_background.dart';
 import '../../../core/widgets/glassmorphic_card.dart';
 import '../../../core/widgets/animated_button.dart';
+import '../../../core/widgets/base64_image.dart';
+import '../../../core/widgets/sync_status.dart';
+import '../../../data/services/auth_service.dart';
+import '../../../data/services/social_service.dart';
+import '../../auth/presentation/login_screen.dart';
+import '../../social/presentation/friends_screen.dart';
+import '../../social/presentation/notifications_screen.dart';
 import 'group_list_controller.dart';
 import '../../settings/presentation/settings_screen.dart';
 import 'create_group_screen.dart';
@@ -34,6 +41,21 @@ class GroupListScreen extends StatelessWidget {
               tooltip: 'Toggle Archived',
             ),
           ),
+          if (AuthService.to.firebaseReady) ...[
+            const SyncButton(),
+            _SocialButton(
+              icon: Icons.people_alt_outlined,
+              tooltip: 'Friends',
+              count: () => SocialService.to.pendingCount,
+              onPressed: () => Get.to(() => const FriendsScreen()),
+            ),
+            _SocialButton(
+              icon: Icons.notifications_none,
+              tooltip: 'Notifications',
+              count: () => SocialService.to.unreadCount,
+              onPressed: () => Get.to(() => const NotificationsScreen()),
+            ),
+          ],
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () => Get.to(() => const SettingsScreen()),
@@ -43,35 +65,12 @@ class GroupListScreen extends StatelessWidget {
       ),
       body: GradientBackground(
         child: SafeArea(
-          child: Obx(() {
-            if (controller.isLoading.value) {
-              return const Center(child: CircularProgressIndicator());
-            }
-
-            if (controller.groups.isEmpty) {
-              return _buildEmptyState(context);
-            }
-
-            return RefreshIndicator(
-              onRefresh: controller.loadGroups,
-              child: ListView.builder(
-                padding: const EdgeInsets.all(AppDimensions.spacing16),
-                itemCount: controller.groups.length,
-                itemBuilder: (context, index) {
-                  final group = controller.groups[index];
-                  return _GroupCard(
-                    group: group,
-                    onTap: () {
-                      Get.to(() => GroupDetailsScreen(groupId: group.id));
-                    },
-                    onArchive: () => controller.toggleArchiveGroup(group.id),
-                    onDelete: () =>
-                        _showDeleteDialog(context, controller, group.id),
-                  );
-                },
-              ),
-            );
-          }),
+          child: Column(
+            children: [
+              const OfflineBanner(),
+              Expanded(child: _buildList(context, controller)),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -81,6 +80,37 @@ class GroupListScreen extends StatelessWidget {
         backgroundColor: AppColors.lavenderGradient[1],
       ),
     );
+  }
+
+  Widget _buildList(BuildContext context, GroupListController controller) {
+    return Obx(() {
+      if (controller.isLoading.value) {
+        return const Center(child: CircularProgressIndicator());
+      }
+
+      if (controller.groups.isEmpty) {
+        return _buildEmptyState(context);
+      }
+
+      return RefreshIndicator(
+        onRefresh: controller.loadGroups,
+        child: ListView.builder(
+          padding: const EdgeInsets.all(AppDimensions.spacing16),
+          itemCount: controller.groups.length,
+          itemBuilder: (context, index) {
+            final group = controller.groups[index];
+            return _GroupCard(
+              group: group,
+              onTap: () {
+                Get.to(() => GroupDetailsScreen(groupId: group.id));
+              },
+              onArchive: () => controller.toggleArchiveGroup(group.id),
+              onDelete: () => _showDeleteDialog(context, controller, group.id),
+            );
+          },
+        ),
+      );
+    });
   }
 
   Widget _buildEmptyState(BuildContext context) {
@@ -144,6 +174,40 @@ class GroupListScreen extends StatelessWidget {
   }
 }
 
+/// App bar icon with a live badge; sends signed-out users to sign in
+class _SocialButton extends StatelessWidget {
+  final IconData icon;
+  final String tooltip;
+  final int Function() count;
+  final VoidCallback onPressed;
+
+  const _SocialButton({
+    required this.icon,
+    required this.tooltip,
+    required this.count,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      final signedIn = AuthService.to.isSignedIn;
+      final n = signedIn ? count() : 0;
+      return IconButton(
+        tooltip: tooltip,
+        onPressed: signedIn
+            ? onPressed
+            : () => Get.to(() => const LoginScreen(fromSettings: true)),
+        icon: Badge(
+          isLabelVisible: n > 0,
+          label: Text('$n'),
+          child: Icon(icon),
+        ),
+      );
+    });
+  }
+}
+
 /// Group Card Widget
 class _GroupCard extends StatelessWidget {
   final dynamic group;
@@ -183,12 +247,15 @@ class _GroupCard extends StatelessWidget {
                       AppDimensions.radiusMedium,
                     ),
                   ),
-                  child: Center(
-                    child: Text(
-                      group.emoji,
-                      style: const TextStyle(fontSize: 28),
-                    ),
-                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: group.imageBase64 != null
+                      ? Base64Image(group.imageBase64!)
+                      : Center(
+                          child: Text(
+                            group.emoji,
+                            style: const TextStyle(fontSize: 28),
+                          ),
+                        ),
                 ),
                 const SizedBox(width: AppDimensions.spacing16),
 

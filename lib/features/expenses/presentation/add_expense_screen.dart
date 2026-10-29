@@ -9,25 +9,47 @@ import '../../../data/models/expense_model.dart';
 import 'add_expense_controller.dart';
 
 /// Add Expense Screen
-class AddExpenseScreen extends StatelessWidget {
+class AddExpenseScreen extends StatefulWidget {
   final int groupId;
 
   const AddExpenseScreen({super.key, required this.groupId});
 
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(AddExpenseController(groupId));
-    final titleController = TextEditingController();
-    final amountController = TextEditingController();
-    final notesController = TextEditingController();
+  State<AddExpenseScreen> createState() => _AddExpenseScreenState();
+}
 
+class _AddExpenseScreenState extends State<AddExpenseScreen> {
+  // Owned by the state so typed text survives rebuilds
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+  final notesController = TextEditingController();
+  late final AddExpenseController controller;
+  late final String _tag;
+
+  @override
+  void initState() {
+    super.initState();
+    _tag = 'add-expense-${widget.groupId}-${identityHashCode(this)}';
+    controller = Get.put(AddExpenseController(widget.groupId), tag: _tag);
     titleController.addListener(
       () => controller.title.value = titleController.text,
     );
     notesController.addListener(
       () => controller.notes.value = notesController.text,
     );
+  }
 
+  @override
+  void dispose() {
+    titleController.dispose();
+    amountController.dispose();
+    notesController.dispose();
+    Get.delete<AddExpenseController>(tag: _tag);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(title: const Text('Add Expense')),
@@ -392,33 +414,11 @@ class _CustomSplitView extends StatelessWidget {
                       ),
                       SizedBox(
                         width: 90,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: isPercentage ? '0%' : '0.00',
-                            isDense: true,
-                            suffix: isPercentage ? const Text('%') : null,
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 8,
-                            ),
-                          ),
-                          keyboardType: const TextInputType.numberWithOptions(
-                            decimal: true,
-                          ),
-                          inputFormatters: [
-                            FilteringTextInputFormatter.allow(
-                              RegExp(r'^\d+\.?\d{0,2}'),
-                            ),
-                          ],
-                          controller: TextEditingController(
-                            text: displayValue > 0
-                                ? displayValue.toStringAsFixed(
-                                    isPercentage ? 1 : 2,
-                                  )
-                                : '',
-                          ),
-                          onChanged: (val) {
-                            final newValue = double.tryParse(val) ?? 0.0;
+                        child: _SplitValueField(
+                          key: ValueKey('${member.id}-$isPercentage'),
+                          value: displayValue,
+                          isPercentage: isPercentage,
+                          onChanged: (newValue) {
                             if (isPercentage) {
                               controller.updatePercentageSplit(
                                 member.id,
@@ -428,9 +428,6 @@ class _CustomSplitView extends StatelessWidget {
                               controller.updateCustomSplit(member.id, newValue);
                             }
                           },
-                          textAlign: TextAlign.right,
-                          style: Theme.of(context).textTheme.titleMedium
-                              ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
@@ -538,6 +535,79 @@ class _CustomSplitView extends StatelessWidget {
           );
         }),
       ],
+    );
+  }
+}
+
+/// Numeric split input that keeps its own controller so the cursor and the
+/// typed text survive rebuilds; it only re-syncs when the value changes from
+/// outside (e.g. the percentage slider).
+class _SplitValueField extends StatefulWidget {
+  final double value;
+  final bool isPercentage;
+  final ValueChanged<double> onChanged;
+
+  const _SplitValueField({
+    super.key,
+    required this.value,
+    required this.isPercentage,
+    required this.onChanged,
+  });
+
+  @override
+  State<_SplitValueField> createState() => _SplitValueFieldState();
+}
+
+class _SplitValueFieldState extends State<_SplitValueField> {
+  late final TextEditingController _textController;
+
+  String _format(double v) =>
+      v > 0 ? v.toStringAsFixed(widget.isPercentage ? 1 : 2) : '';
+
+  @override
+  void initState() {
+    super.initState();
+    _textController = TextEditingController(text: _format(widget.value));
+  }
+
+  @override
+  void didUpdateWidget(covariant _SplitValueField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final typed = double.tryParse(_textController.text) ?? 0.0;
+    if (_format(typed) != _format(widget.value)) {
+      final text = _format(widget.value);
+      _textController.value = TextEditingValue(
+        text: text,
+        selection: TextSelection.collapsed(offset: text.length),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: _textController,
+      decoration: InputDecoration(
+        hintText: widget.isPercentage ? '0%' : '0.00',
+        isDense: true,
+        suffix: widget.isPercentage ? const Text('%') : null,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      ),
+      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+      ],
+      onChanged: (val) => widget.onChanged(double.tryParse(val) ?? 0.0),
+      textAlign: TextAlign.right,
+      style: Theme.of(
+        context,
+      ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
     );
   }
 }

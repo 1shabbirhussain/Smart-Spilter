@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:get/get.dart';
 import '../../../data/models/group_model.dart';
 import '../../../data/services/database_service.dart';
@@ -12,19 +13,37 @@ class GroupListController extends GetxController {
   final RxBool isLoading = false.obs;
   final RxBool showArchived = false.obs;
 
+  StreamSubscription? _groupsSubscription;
+  bool _loadedOnce = false;
+
   // MARK: - Lifecycle
 
   @override
   void onInit() {
     super.onInit();
     loadGroups();
+    _watchGroups();
+  }
+
+  @override
+  void onClose() {
+    _groupsSubscription?.cancel();
+    super.onClose();
+  }
+
+  /// Keeps the list in sync with changes made on other screens
+  /// (archive/delete from details, groups joined via invites, ...)
+  Future<void> _watchGroups() async {
+    final db = await _db.isar;
+    _groupsSubscription = db.groups.watchLazy().listen((_) => loadGroups());
   }
 
   // MARK: - Data Loading
 
   Future<void> loadGroups() async {
     try {
-      isLoading.value = true;
+      // Only show the spinner on first load to avoid flicker on refreshes
+      if (!_loadedOnce) isLoading.value = true;
       final allGroups = await _db.getAllGroups(includeArchived: true);
 
       // Filter based on showArchived state
@@ -42,6 +61,7 @@ class GroupListController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     } finally {
+      _loadedOnce = true;
       isLoading.value = false;
     }
   }

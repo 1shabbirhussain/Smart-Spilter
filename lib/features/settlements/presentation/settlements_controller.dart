@@ -13,9 +13,9 @@ class SettlementsController extends GetxController {
 
   SettlementsController({
     required this.groupId,
-    required this.balances,
+    required Map<int, double> balances,
     required this.members,
-  });
+  }) : balances = Map<int, double>.of(balances);
 
   // MARK: - Observable State
 
@@ -50,36 +50,49 @@ class SettlementsController extends GetxController {
     }
   }
 
+  /// Reflect a recorded payment in the local balances so the suggested
+  /// list updates (the balances passed in are a snapshot)
+  void _applyPayment(Settlement payment) {
+    balances[payment.fromMemberId] =
+        (balances[payment.fromMemberId] ?? 0) + payment.amount;
+    balances[payment.toMemberId] =
+        (balances[payment.toMemberId] ?? 0) - payment.amount;
+    _calculateOptimizedSettlements();
+  }
+
   // MARK: - Settlement Actions
 
   Future<void> markAsSettled(Settlement settlement) async {
+    if (isLoading.value) return; // ignore double taps
     try {
       isLoading.value = true;
       await _db.createSettlement(settlement);
+      _applyPayment(settlement);
       await _loadCompletedSettlements();
-      _calculateOptimizedSettlements();
-
-      // Show confetti celebration
-      showConfetti.value = true;
-      await Future.delayed(const Duration(seconds: 3));
-      showConfetti.value = false;
-
-      Get.snackbar(
-        '🎉 Settlement Complete!',
-        'Payment has been recorded',
-        snackPosition: SnackPosition.BOTTOM,
-      );
     } catch (e) {
       Get.snackbar('Error', 'Failed to record settlement: $e');
+      return;
     } finally {
       isLoading.value = false;
     }
+
+    Get.snackbar(
+      '🎉 Settlement Complete!',
+      'Payment has been recorded',
+      snackPosition: SnackPosition.BOTTOM,
+    );
+
+    // Show confetti celebration
+    showConfetti.value = true;
+    await Future.delayed(const Duration(seconds: 3));
+    if (!isClosed) showConfetti.value = false;
   }
 
   Future<void> markPartialPayment(
     Settlement settlement,
     double partialAmount,
   ) async {
+    if (isLoading.value) return; // ignore double taps
     try {
       isLoading.value = true;
 
@@ -92,6 +105,7 @@ class SettlementsController extends GetxController {
       );
 
       await _db.createSettlement(partialSettlement);
+      _applyPayment(partialSettlement);
       await _loadCompletedSettlements();
 
       Get.snackbar(

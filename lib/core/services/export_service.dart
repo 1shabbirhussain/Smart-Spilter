@@ -262,7 +262,7 @@ class ExportService {
           ),
           const SizedBox(height: 20),
           const Text(
-            'Smart Expense Splitter',
+            'Smart Split',
             style: TextStyle(color: Colors.white, fontSize: 12),
           ),
         ],

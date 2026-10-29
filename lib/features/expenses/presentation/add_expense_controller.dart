@@ -144,6 +144,7 @@ class AddExpenseController extends GetxController {
   // MARK: - Expense Creation
 
   Future<void> createExpense() async {
+    if (isCreating.value) return; // ignore double taps
     if (!canCreate) {
       Get.snackbar('Error', 'Please fill all required fields');
       return;
@@ -169,7 +170,7 @@ class AddExpenseController extends GetxController {
 
       final expense = Expense(
         groupId: groupId,
-        title: title.value,
+        title: title.value.trim(),
         amount: amount.value,
         category: category.value,
         notes: notes.value.isEmpty ? null : notes.value,
